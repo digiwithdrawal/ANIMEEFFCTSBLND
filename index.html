@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime FX Exporter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><span class="logo-dot"></span> Anime FX Exporter</div>
+      <div class="top-hint">One effect at a time · Export GLB / FBX · Import into Blender</div>
+    </header>
+
+    <aside class="left-panel">
+      <div class="tabs">
+        <button id="tab3d" class="tab active">3D FX</button>
+        <button id="tab2d" class="tab">2D FX</button>
+      </div>
+
+      <div id="fxList" class="fx-list"></div>
+    </aside>
+
+    <main class="viewport-wrap">
+      <div id="viewport" class="viewport"></div>
+      <div class="viewport-labels">
+        <span>Orbit: left drag</span>
+        <span>Zoom: wheel</span>
+        <span>Pan: right drag</span>
+      </div>
+      <div class="axis-chip">3D VIEW</div>
+    </main>
+
+    <aside class="right-panel">
+      <section class="panel-section">
+        <h2 id="effectTitle">Power Ball</h2>
+        <p id="effectDesc">A pulsing 3D energy sphere with rings and glow shells.</p>
+      </section>
+
+      <section class="panel-section controls">
+        <label>Base Color <input type="color" id="colorA" value="#3fd7ff"></label>
+        <label>Accent Color <input type="color" id="colorB" value="#ffffff"></label>
+        <label>Scale <input type="range" id="scale" min="0.3" max="8" step="0.1" value="2"></label>
+        <label>Glow <input type="range" id="glow" min="0" max="10" step="0.1" value="4"></label>
+        <label>Speed <input type="range" id="speed" min="0.1" max="5" step="0.1" value="1.4"></label>
+        <label>Density <input type="range" id="density" min="1" max="10" step="1" value="5"></label>
+        <label>Length <input type="range" id="length" min="1" max="20" step="0.5" value="7"></label>
+        <label>Thickness <input type="range" id="thickness" min="0.05" max="3" step="0.05" value="0.6"></label>
+      </section>
+
+      <section class="panel-section export-box">
+        <button id="resetCam" class="small-btn">Reset Camera</button>
+        <button id="exportGlb" class="export glb">Export GLB</button>
+        <button id="exportFbx" class="export fbx">Export FBX</button>
+        <p class="mini-note">Exports only the selected current effect, not a stack.</p>
+      </section>
+    </aside>
+
+    <footer class="timeline">
+      <div class="play-dot"></div>
+      <div>Looping preview: <b id="loopStatus">Playing</b></div>
+      <div class="framebar"><span></span></div>
+    </footer>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
